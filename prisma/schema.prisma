@@ -15,7 +15,7 @@ model User {
   age            Int
   name           String
   email          String          @unique
-  isAdmin        Boolean
+  role           Role            @default(BASIC)
   largeNumber    BigInt
   writtenPosts   Post[]          @relation("WrittenPosts")
   favoritePosts  Post[]          @relation("FavoritePosts")
@@ -49,4 +49,9 @@ model Category {
   id    String @id @default(uuid())
   name  String @unique
   posts Post[]
+}
+
+enum Role {
+  BASIC
+  ADMIN
 }
